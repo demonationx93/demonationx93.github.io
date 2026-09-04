@@ -23,6 +23,12 @@ const canonicalURL = new URL(canonicalPath, siteConfig.siteUrl);
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+    />
     <link rel="icon" type="image/svg+xml" href={withBase("/favicon.svg")} />
     <link rel="alternate" type="application/rss+xml" title={`${profile.name} articles`} href={withBase("/rss.xml")} />
     <link rel="canonical" href={canonicalURL} />
