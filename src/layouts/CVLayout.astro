@@ -17,17 +17,24 @@ const { page = "home", ...meta } = Astro.props;
 ---
 
 <BaseLayout {...meta}>
-  <div class="site-shell">
-    <Sidebar page={page} />
-    <main id="main-content" class="main-column"><slot /></main>
+  <div class:list={["page-frame", { "article-font-scope": page === "articles" || page === "article" }]}>
+    <div class="site-shell">
+      <Sidebar page={page} />
+      <main id="main-content" class="main-column"><slot /></main>
+    </div>
+    <footer class="site-footer">
+      <span>© {new Date().getFullYear()} {profile.name}</span>
+      <a href={withBase("/rss.xml")}>RSS</a>
+    </footer>
   </div>
-  <footer class="site-footer">
-    <span>© {new Date().getFullYear()} {profile.name}</span>
-    <a href={withBase("/rss.xml")}>RSS</a>
-  </footer>
 </BaseLayout>
 
 <style>
+  .article-font-scope {
+    --font-sans: var(--font-serif);
+    font-family: var(--font-serif);
+  }
+
   .site-shell {
     column-gap: var(--column-gap);
     display: grid;
