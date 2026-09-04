@@ -1,10 +1,9 @@
 import { siteUrl } from "../../site.config.mjs";
 
 export const siteConfig = {
-  title: "Han Hojin — Security Researcher",
+  title: "Hojin Han — Security Researcher",
   description: "Academic profile and research notes on security, AI security, and software systems.",
   siteUrl,
-  author: "Han Hojin",
+  author: "Hojin Han",
   locale: "en_US",
 };
-

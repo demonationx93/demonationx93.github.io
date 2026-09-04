@@ -28,7 +28,7 @@ export type Project = {
 };
 
 export const about = [
-  "Han Hojin is a researcher working across security, artificial intelligence, and software systems. Replace this short biography with a concise account of current questions, methods, and affiliations.",
+  "Hojin Han is a researcher working across security, artificial intelligence, and software systems. Replace this short biography with a concise account of current questions, methods, and affiliations.",
   "This site separates a conventional academic record from longer research notes. All biographical and CV details below are deliberately marked as sample content until replaced.",
 ];
 
@@ -41,11 +41,10 @@ export const researchInterests = [
 
 export const education: CVEntry[] = [
   {
-    period: "20XX — 20XX",
-    organization: "Institution name",
-    detail: "Degree and field of study",
-    location: "City, Country",
-    placeholder: true,
+    period: "2022 — 2027",
+    organization: "Korea University",
+    detail: "Bachelor of Science in Computer Science and Engineering",
+    location: "Seoul, Republic of Korea",
   },
 ];
 
@@ -64,7 +63,7 @@ export const publications: Publication[] = [
   {
     year: "20XX",
     title: "Sample Publication Title",
-    authors: "Author One, Han Hojin, Author Three",
+    authors: "Author One, Hojin Han, Author Three",
     venue: "Sample venue or preprint archive",
     status: "Preprint",
     placeholder: true,
