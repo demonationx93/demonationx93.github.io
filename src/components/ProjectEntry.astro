@@ -1,0 +1,23 @@
+---
+import type { Project } from "../data/cv";
+
+interface Props { project: Project }
+const { project } = Astro.props;
+---
+
+<article class="project">
+  {project.placeholder && <p class="sample-label">Sample content</p>}
+  <h3>{project.name}</h3>
+  <p class="description">{project.description}</p>
+  {project.links && <p class="project-links">{project.links.map((link) => <a href={link.href}>{link.label} ↗</a>)}</p>}
+</article>
+
+<style>
+  p, h3 { margin: 0; }
+  .project + .project { margin-top: 1.875rem; }
+  h3 { font-size: 1rem; font-weight: 550; line-height: 1.45; }
+  .description { color: var(--color-text-secondary); font-size: 0.9375rem; line-height: 1.65; margin-top: var(--space-1); max-width: 38rem; }
+  .sample-label { color: var(--color-text-tertiary); font-size: 0.72rem; letter-spacing: 0.05em; margin-bottom: 0.4375rem; text-transform: uppercase; }
+  .project-links { margin-top: var(--space-2); }
+  .project-links a { font-size: 0.8125rem; }
+</style>

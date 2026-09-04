@@ -1,0 +1,61 @@
+---
+import CVEntry from "../components/CVEntry.astro";
+import ProjectEntry from "../components/ProjectEntry.astro";
+import PublicationEntry from "../components/PublicationEntry.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import CVLayout from "../layouts/CVLayout.astro";
+import { about, awards, education, experience, projects, publications, researchInterests } from "../data/cv";
+---
+
+<CVLayout page="home">
+  <div class="cv-page">
+    <section class="cv-section" aria-labelledby="about-heading">
+      <SectionHeading as="h1" id="about-heading">About</SectionHeading>
+      <div class="about-copy">{about.map((paragraph) => <p>{paragraph}</p>)}</div>
+    </section>
+    <section class="cv-section" aria-labelledby="interests-heading">
+      <SectionHeading id="interests-heading">Research Interests</SectionHeading>
+      <ul class="interests">{researchInterests.map((interest) => <li>{interest}</li>)}</ul>
+    </section>
+    <section class="cv-section" aria-labelledby="education-heading">
+      <SectionHeading id="education-heading">Education</SectionHeading>
+      <div class="entry-list">{education.map((entry) => <CVEntry entry={entry} />)}</div>
+    </section>
+    <section class="cv-section" aria-labelledby="experience-heading">
+      <SectionHeading id="experience-heading">Experience</SectionHeading>
+      <div class="entry-list">{experience.map((entry) => <CVEntry entry={entry} />)}</div>
+    </section>
+    {publications.length > 0 && (
+      <section class="cv-section" aria-labelledby="publications-heading">
+        <SectionHeading id="publications-heading">Publications</SectionHeading>
+        <div class="entry-list">{publications.map((publication) => <PublicationEntry publication={publication} />)}</div>
+      </section>
+    )}
+    {projects.length > 0 && (
+      <section class="cv-section" aria-labelledby="projects-heading">
+        <SectionHeading id="projects-heading">Projects</SectionHeading>
+        <div class="entry-list">{projects.map((project) => <ProjectEntry project={project} />)}</div>
+      </section>
+    )}
+    {awards.length > 0 && (
+      <section class="cv-section" aria-labelledby="awards-heading">
+        <SectionHeading id="awards-heading">Awards / Activities</SectionHeading>
+        <div class="entry-list">{awards.map((entry) => <CVEntry entry={entry} />)}</div>
+      </section>
+    )}
+  </div>
+</CVLayout>
+
+<style>
+  .cv-section + .cv-section { margin-top: 4.5rem; }
+  .about-copy { font-size: 1rem; line-height: 1.72; max-width: 40rem; }
+  .about-copy p { margin: 0; }
+  .about-copy p + p { margin-top: var(--space-4); }
+  .interests { display: grid; gap: var(--space-2); list-style: none; margin: 0; padding: 0; }
+  .interests li { font-size: 1rem; font-weight: 500; line-height: 1.55; }
+  .entry-list { min-width: 0; }
+
+  @media (max-width: 760px) {
+    .cv-section + .cv-section { margin-top: 3.5rem; }
+  }
+</style>

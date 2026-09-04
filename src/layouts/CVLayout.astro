@@ -1,0 +1,74 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Sidebar from "../components/Sidebar.astro";
+import { profile } from "../config/profile";
+import { withBase } from "../lib/format";
+
+interface Props {
+  title?: string;
+  description?: string;
+  page?: "home" | "articles" | "article";
+  canonicalPath?: string;
+  type?: "website" | "article";
+  publishedAt?: Date;
+}
+
+const { page = "home", ...meta } = Astro.props;
+---
+
+<BaseLayout {...meta}>
+  <div class="site-shell">
+    <Sidebar page={page} />
+    <main id="main-content" class="main-column"><slot /></main>
+  </div>
+  <footer class="site-footer">
+    <span>© {new Date().getFullYear()} {profile.name}</span>
+    <a href={withBase("/rss.xml")}>RSS</a>
+  </footer>
+</BaseLayout>
+
+<style>
+  .site-shell {
+    column-gap: var(--column-gap);
+    display: grid;
+    grid-template-columns: var(--sidebar-width) minmax(0, var(--main-width));
+    margin-inline: auto;
+    padding-block: 3.5rem var(--space-24);
+    width: min(calc(100% - 3rem), var(--content-width));
+  }
+
+  .main-column { min-width: 0; }
+
+  .site-footer {
+    border-top: 1px solid var(--color-border-light);
+    color: var(--color-text-tertiary);
+    display: flex;
+    font-size: 0.8125rem;
+    gap: var(--space-6);
+    justify-content: space-between;
+    margin-inline: auto;
+    padding-block: 1.125rem var(--space-8);
+    width: min(calc(100% - 3rem), var(--content-width));
+  }
+
+  @media (max-width: 900px) {
+    .site-shell {
+      column-gap: var(--space-12);
+      grid-template-columns: 11.875rem minmax(0, 1fr);
+    }
+  }
+
+  @media (max-width: 760px) {
+    .site-shell {
+      display: block;
+      padding-block: 1.75rem var(--space-16);
+      width: min(calc(100% - 2.5rem), 42.5rem);
+    }
+
+    .main-column { margin-top: 3.5rem; }
+
+    .site-footer {
+      width: min(calc(100% - 2.5rem), 42.5rem);
+    }
+  }
+</style>

@@ -1,0 +1,32 @@
+---
+import type { CVEntry as CVEntryType } from "../data/cv";
+
+interface Props { entry: CVEntryType }
+const { entry } = Astro.props;
+---
+
+<article class="cv-entry">
+  <p class="period">{entry.period}</p>
+  <div class="entry-body">
+    {entry.placeholder && <p class="sample-label">Sample content</p>}
+    <h3>{entry.organization}</h3>
+    <p class="detail">{entry.detail}</p>
+    {entry.location && <p class="location">{entry.location}</p>}
+    {entry.description && <p class="description">{entry.description}</p>}
+    {entry.links && <p class="entry-links">{entry.links.map((link) => <a href={link.href}>{link.label} ↗</a>)}</p>}
+  </div>
+</article>
+
+<style>
+  .cv-entry { min-width: 0; }
+  .cv-entry + .cv-entry { margin-top: 2.125rem; }
+  p, h3 { margin: 0; }
+  .period { color: var(--color-text-tertiary); font-size: 0.8125rem; line-height: 1.5; margin-bottom: 0.4375rem; }
+  .location { color: var(--color-text-tertiary); font-size: 0.875rem; line-height: 1.55; margin-top: 0.125rem; }
+  h3 { color: var(--color-text); font-size: 1rem; font-weight: 550; line-height: 1.45; }
+  .detail { color: var(--color-text-secondary); font-size: 0.9375rem; line-height: 1.55; margin-top: 0.125rem; }
+  .description { font-size: 0.9375rem; line-height: 1.65; margin-top: 0.5625rem; }
+  .sample-label { color: var(--color-text-tertiary); font-size: 0.72rem; letter-spacing: 0.05em; margin-bottom: 0.4375rem; text-transform: uppercase; }
+  .entry-links { display: flex; flex-wrap: wrap; gap: 0.875rem; margin-top: var(--space-2); }
+  .entry-links a { font-size: 0.8125rem; }
+</style>

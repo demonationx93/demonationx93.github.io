@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 550" role="img" aria-labelledby="title desc">
+  <title id="title">Profile portrait placeholder</title>
+  <desc id="desc">A neutral paper-toned rectangle labeled Portrait placeholder.</desc>
+  <rect width="440" height="550" fill="#e8e8e1"/>
+  <path d="M0 0h440v550H0z" fill="none" stroke="#d3d3cc"/>
+  <line x1="0" y1="0" x2="440" y2="550" stroke="#d8d8d1"/>
+  <line x1="440" y1="0" x2="0" y2="550" stroke="#d8d8d1"/>
+  <text x="220" y="267" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#777770">PORTRAIT</text>
+  <text x="220" y="294" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#91918a">REPLACE IN /PUBLIC</text>
+</svg>

@@ -1,0 +1,118 @@
+:root {
+  --color-bg: #f8f8f5;
+  --color-surface: #f8f8f5;
+  --color-text: #191918;
+  --color-text-secondary: #5f5f5a;
+  --color-text-tertiary: #8a8a84;
+  --color-link: #242422;
+  --color-link-hover: #000000;
+  --color-border: #dadad4;
+  --color-border-light: #e8e8e2;
+  --color-code-bg: #efefeb;
+
+  --font-sans: Inter, Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", sans-serif;
+  --font-serif: Iowan Old Style, "Palatino Linotype", Palatino, "Noto Serif KR", Georgia, serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+
+  --content-width: 65rem;
+  --sidebar-width: 14rem;
+  --main-width: 43.75rem;
+  --column-gap: 5.25rem;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --transition-fast: 120ms ease;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* Compatibility aliases used by scoped component styles. */
+  --bg: var(--color-bg);
+  --surface: var(--color-surface);
+  --text: var(--color-text);
+  --muted: var(--color-text-secondary);
+  --faint: var(--color-text-tertiary);
+  --border: var(--color-border);
+  --link: var(--color-link);
+  --focus: currentColor;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  margin: 0;
+}
+
+body,
+button,
+input,
+textarea,
+select { font-family: var(--font-sans); }
+
+a {
+  color: var(--color-link);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover { color: var(--color-link-hover); }
+
+a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+img { max-width: 100%; }
+
+::selection {
+  background: #d9d9d2;
+  color: #111;
+}
+
+.section-heading {
+  color: var(--color-text-secondary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.065em;
+  line-height: 1.4;
+  margin: 0 0 1.375rem;
+  text-transform: uppercase;
+}
+
+.section-heading:lang(ko) {
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

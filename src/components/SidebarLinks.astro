@@ -1,0 +1,61 @@
+---
+import { profile } from "../config/profile";
+import { withBase } from "../lib/format";
+
+interface Props {
+  page?: "home" | "articles" | "article";
+}
+
+const { page = "home" } = Astro.props;
+const externalLinks = [
+  { label: "GitHub", href: profile.github },
+  { label: "Google Scholar", href: profile.scholar },
+  { label: "LinkedIn", href: profile.linkedin },
+  { label: "Email", href: profile.email ? `mailto:${profile.email}` : "" },
+].filter((link) => link.href);
+---
+
+<nav class="sidebar-nav" aria-label="Primary navigation">
+  <div class="primary-links">
+    {page !== "home" && <a href={withBase("/")}>Home <span aria-hidden="true">←</span></a>}
+    {page === "home" && <a href={withBase("/articles/")}>Articles <span aria-hidden="true">→</span></a>}
+    {page === "article" && <a href={withBase("/articles/")}>Articles <span aria-hidden="true">←</span></a>}
+    {profile.cv && (
+      <a href={withBase(profile.cv)} download>CV <span aria-hidden="true">↓</span></a>
+    )}
+  </div>
+
+  {externalLinks.length > 0 ? (
+    <div class="external-links">
+      <p class="nav-label">Links</p>
+      {externalLinks.map((link) => (
+        <a href={link.href} target={link.label === "Email" ? undefined : "_blank"} rel={link.label === "Email" ? undefined : "noopener noreferrer"}>
+          {link.label} <span aria-hidden="true">↗</span>
+        </a>
+      ))}
+    </div>
+  ) : (
+    <p class="empty-note">Add external links in <code>src/config/profile.ts</code>.</p>
+  )}
+</nav>
+
+<style>
+  .sidebar-nav, .primary-links, .external-links { display: grid; }
+  .sidebar-nav { gap: 1.75rem; margin-top: 1.75rem; }
+  .primary-links, .external-links { gap: 0; }
+  a { align-items: baseline; color: var(--color-link); display: flex; font-size: 0.9375rem; gap: var(--space-4); justify-content: space-between; line-height: 1.5; padding-block: var(--space-1); text-decoration: none; }
+  a span { color: var(--color-text-tertiary); transition: color var(--transition-fast), transform var(--transition-fast); }
+  a:hover, a:focus-visible { color: var(--color-link-hover); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover span { color: var(--color-text); transform: translateX(2px); }
+  .nav-label, .empty-note { color: var(--color-text-tertiary); font-size: 0.75rem; margin: 0 0 var(--space-1); }
+  .nav-label { letter-spacing: 0; }
+  .empty-note { line-height: 1.55; }
+  .empty-note code { font-size: 0.72rem; }
+
+  @media (max-width: 760px) {
+    .sidebar-nav { gap: var(--space-5); margin-top: var(--space-6); }
+    .primary-links, .external-links { display: flex; flex-wrap: wrap; gap: var(--space-2) 1.125rem; }
+    a { gap: var(--space-2); padding-block: 0; }
+    .nav-label, .empty-note { width: 100%; }
+  }
+</style>

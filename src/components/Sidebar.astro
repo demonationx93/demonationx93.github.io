@@ -1,0 +1,56 @@
+---
+import { profile } from "../config/profile";
+import { withBase } from "../lib/format";
+import SidebarLinks from "./SidebarLinks.astro";
+
+interface Props {
+  page?: "home" | "articles" | "article";
+}
+
+const { page = "home" } = Astro.props;
+---
+
+<aside class="sidebar" aria-label="Profile">
+  <a class="portrait-link" href={withBase("/")} aria-label={`${profile.name}, homepage`}>
+    <img src={withBase(profile.portrait)} alt={profile.portraitAlt} width="440" height="550" loading="eager" decoding="async" />
+  </a>
+  <div class="identity">
+    <p class="name">{profile.name}</p>
+    <p class="korean-name" lang="ko">{profile.koreanName}</p>
+    <p class="details">b. {profile.birthYear}<br />{profile.role}<br />{profile.location}</p>
+  </div>
+  <SidebarLinks page={page} />
+</aside>
+
+<style>
+  .sidebar { align-self: start; position: sticky; top: 3rem; }
+  .portrait-link { display: block; }
+  img { aspect-ratio: 4 / 5; border-radius: 1px; display: block; height: auto; max-width: 14rem; object-fit: cover; width: 100%; }
+  .identity { margin-top: 1.25rem; }
+  p { margin: 0; }
+  .name { font-size: 1.5rem; font-weight: 550; letter-spacing: -0.02em; line-height: 1.2; }
+  .korean-name { color: var(--color-text-secondary); font-size: 0.9375rem; line-height: 1.45; margin-top: var(--space-1); }
+  .details { color: var(--color-text-secondary); font-size: 0.875rem; line-height: 1.6; margin-top: var(--space-3); }
+
+  @media (min-width: 761px) and (max-height: 700px) {
+    .sidebar { position: static; }
+  }
+
+  @media (max-width: 900px) and (min-width: 761px) {
+    img { max-width: 11.875rem; }
+  }
+
+  @media (max-width: 760px) {
+    .sidebar { border-bottom: 1px solid var(--color-border-light); display: grid; grid-template-columns: min(8.25rem, 42vw) minmax(0, 1fr); column-gap: var(--space-6); padding-bottom: var(--space-8); position: static; }
+    .identity { margin-top: 0; }
+    .sidebar :global(.sidebar-nav) { grid-column: 1 / -1; }
+    img { width: 8.25rem; }
+    .name { font-size: 1.375rem; }
+  }
+
+  @media (max-width: 360px) {
+    .sidebar { column-gap: var(--space-5); grid-template-columns: 7.5rem minmax(0, 1fr); }
+    img { width: 7.5rem; }
+    .details { font-size: 0.8125rem; overflow-wrap: anywhere; }
+  }
+</style>

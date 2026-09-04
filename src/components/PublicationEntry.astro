@@ -1,0 +1,30 @@
+---
+import type { Publication } from "../data/cv";
+
+interface Props { publication: Publication }
+const { publication } = Astro.props;
+---
+
+<article class="publication">
+  <p class="year">{publication.year}</p>
+  <div>
+    {publication.placeholder && <p class="sample-label">Sample content</p>}
+    <h3>{publication.title}</h3>
+    <p class="authors">{publication.authors}</p>
+    <p class="venue">{publication.venue}{publication.status ? ` · ${publication.status}` : ""}</p>
+    {publication.links && <p class="publication-links">{publication.links.map((link) => <a href={link.href}>{link.label}</a>)}</p>}
+  </div>
+</article>
+
+<style>
+  .publication { min-width: 0; }
+  .publication + .publication { margin-top: 1.875rem; }
+  p, h3 { margin: 0; }
+  .year { color: var(--color-text-tertiary); font-size: 0.8125rem; line-height: 1.5; margin-bottom: 0.4375rem; }
+  h3 { font-size: 1rem; font-weight: 550; line-height: 1.5; }
+  .authors { color: var(--color-text-secondary); font-size: 0.875rem; line-height: 1.55; margin-top: var(--space-1); }
+  .venue { color: var(--color-text-tertiary); font-size: 0.875rem; line-height: 1.55; margin-top: 0.125rem; }
+  .sample-label { color: var(--color-text-tertiary); font-size: 0.72rem; letter-spacing: 0.05em; margin-bottom: 0.4375rem; text-transform: uppercase; }
+  .publication-links { display: flex; flex-wrap: wrap; gap: 0.875rem; margin-top: var(--space-2); }
+  .publication-links a { font-size: 0.8125rem; }
+</style>
